@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مساعد الطالب</title>
+    <link rel="icon" type="image/svg" href="logo.svg">
+        <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>مساعد الطالب</h1>
+    
+    <div id="gpaSelection">
+        <h2>اختر نظام GPA</h2>
+        <button onclick="selectGPASystem(5)">نظام GPA 5</button>
+        <button onclick="selectGPASystem(4)">نظام GPA 4</button>
+    </div>
+
+
+        <div id="mainContent" style="display: none;">
+            <div id="sections">
+                <button class="section-button active-section" onclick="showSection('cumulativeGPA')">حساب المعدل التراكمي</button>
+                <button class="section-button" onclick="showSection('semesterGPA')">حساب المعدل الفصلي</button>
+                <button class="section-button" onclick="showSection('gradeEstimation')">حساب التقدير</button>
+                <button class="section-button" onclick="showSection('gpaToPercentage')">تحويل GPA إلى نسبة مئوية</button>
+                <button class="section-button" onclick="showSection('updateGPA')">تحديث GPA</button>
+            </div>
+    
+            <div id="cumulativeGPA" class="calculator">
+                <h2>حساب المعدل التراكمي</h2>
+                <div id="cumulativeCourses"></div>
+                <button onclick="addCourse('cumulative')">إضافة مادة</button>
+                <button onclick="calculateGPA('cumulative')">حساب المعدل التراكمي</button>
+                <div id="cumulativeResult" class="result"></div>
+            </div>
+    
+            <div id="semesterGPA" class="calculator" style="display: none;">
+                <h2>حساب المعدل الفصلي</h2>
+                <div id="semesterCourses"></div>
+                <button onclick="addCourse('semester')">إضافة مادة</button>
+                <button onclick="calculateGPA('semester')">حساب المعدل الفصلي</button>
+                <div id="semesterResult" class="result"></div>
+            </div>
+    
+            <div id="gradeEstimation" class="calculator" style="display: none;">
+                <h2>حساب التقدير</h2>
+                <input type="number" id="lastGPA" placeholder="أدخل آخر معدل" min="0" step="0.01">
+                <button onclick="estimateGrade()">حساب التقدير</button>
+                <div id="gradeResult" class="result"></div>
+            </div>
+    
+            <div id="gpaToPercentage" class="calculator" style="display: none;">
+                <h2>تحويل GPA إلى نسبة مئوية</h2>
+                <input type="number" id="gpaToConvert" placeholder="أدخل GPA للتحويل" min="0" step="0.01">
+                <button onclick="convertGPAToPercentage()">تحويل إلى نسبة مئوية</button>
+                <div id="percentageResult" class="result"></div>
+            </div>
+    
+            <div id="updateGPA" class="calculator" style="display: none;">
+                <h2>تحديث GPA</h2>
+                <input type="number" id="oldGPA" placeholder="GPA القديم" min="0" step="0.01">
+                <input type="number" id="oldCredits" placeholder="الساعات المعتمدة السابقة" min="0" step="1">
+                <div id="newCourses"></div>
+                <button onclick="addCourse('new')">إضافة مادة جديدة</button>
+                <button onclick="updateGPA()">حساب GPA الجديد</button>
+                <div id="updatedResult" class="result"></div>
+            </div>
+        </div>
+    
+        <button id="backButton" onclick="goBack()" style="display: none;">رجوع</button>
+
+        <footer>
+            <p>جميع الحقوق محفوظة © aboelnaga</p>
+        </footer> 
+        <script src="script.js"></script>
+    </body>
+    </html>  
